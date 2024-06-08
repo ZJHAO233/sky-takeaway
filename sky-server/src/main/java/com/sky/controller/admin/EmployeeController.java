@@ -3,24 +3,26 @@ package com.sky.controller.admin;
 import com.sky.constant.JwtClaimsConstant;
 import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeeLoginDTO;
+import com.sky.dto.EmployeePageQueryDTO;
 import com.sky.entity.Employee;
 import com.sky.properties.JwtProperties;
+import com.sky.result.PageResult;
 import com.sky.result.Result;
 import com.sky.service.EmployeeService;
 import com.sky.utils.JwtUtil;
 import com.sky.vo.EmployeeLoginVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * 员工管理
+ *
+ * @author ZJHAO
+ * @date 2024/06/08
  */
 @RestController
 @RequestMapping("/admin/employee")
@@ -72,11 +74,28 @@ public class EmployeeController {
         return Result.success();
     }
 
+    /**
+     * 新增员工
+     *
+     * @param employeeDTO 员工 DTO
+     * @return {@link Result }
+     */
     @PostMapping
-    Result add(@RequestBody EmployeeDTO employeeDTO){
+    Result add(@RequestBody EmployeeDTO employeeDTO) {
         log.info("新增员工{}", employeeDTO);
         employeeService.add(employeeDTO);
         return Result.success();
     }
 
+    /**
+     * 分页查询员工
+     *
+     * @param employeePageQueryDTO 员工页面查询 DTO
+     * @return {@link Result }<{@link PageResult }>
+     */
+    @GetMapping("/page")
+    Result<PageResult> page(EmployeePageQueryDTO employeePageQueryDTO) {
+        log.info("员工分页查询，参数为：{}", employeePageQueryDTO);
+        return Result.success(employeeService.pageQuery(employeePageQueryDTO));
+    }
 }
