@@ -18,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -47,11 +48,11 @@ public class CategoryServiceImpl implements CategoryService {
         //分类状态默认为禁用状态0
         category.setStatus(StatusConstant.DISABLE);
 
-        //设置创建时间、修改时间、创建人、修改人
-        category.setCreateTime(LocalDateTime.now());
-        category.setUpdateTime(LocalDateTime.now());
-        category.setCreateUser(BaseContext.getCurrentId());
-        category.setUpdateUser(BaseContext.getCurrentId());
+        // //设置创建时间、修改时间、创建人、修改人
+        // category.setCreateTime(LocalDateTime.now());
+        // category.setUpdateTime(LocalDateTime.now());
+        // category.setCreateUser(BaseContext.getCurrentId());
+        // category.setUpdateUser(BaseContext.getCurrentId());
 
         categoryMapper.insert(category);
     }
