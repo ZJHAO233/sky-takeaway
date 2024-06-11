@@ -112,4 +112,29 @@ public class EmployeeController {
         return Result.success();
     }
 
+    /**
+     * 通过id获取员工信息
+     *
+     * @param id ID
+     * @return {@link Result }<{@link Employee }>
+     */
+    @GetMapping("/{id}")
+    Result<Employee> getById(@PathVariable Long id){
+        log.info("要查询的员工id：{}", id);
+        return Result.success(employeeService.getById(id));
+    }
+
+
+    /**
+     * 更新员工信息
+     *
+     * @param employeeDTO 员工 DTO
+     * @return {@link Result }
+     */
+    @PutMapping
+    Result updateEmployee(@RequestBody EmployeeDTO employeeDTO){
+        log.info("要修改的信息：{}",employeeDTO);
+        employeeService.updateEmployee(employeeDTO);
+        return Result.success();
+    }
 }
