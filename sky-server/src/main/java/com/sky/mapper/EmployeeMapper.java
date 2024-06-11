@@ -6,6 +6,12 @@ import com.sky.entity.Employee;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+/**
+ * 员工映射器
+ *
+ * @author ZJHAO
+ * @date 2024/06/11
+ */
 @Mapper
 public interface EmployeeMapper {
 

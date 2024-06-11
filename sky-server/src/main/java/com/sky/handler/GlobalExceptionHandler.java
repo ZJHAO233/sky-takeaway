@@ -11,6 +11,9 @@ import java.sql.SQLIntegrityConstraintViolationException;
 
 /**
  * 全局异常处理器，处理项目中抛出的业务异常
+ *
+ * @author ZJHAO
+ * @date 2024/06/11
  */
 @RestControllerAdvice
 @Slf4j

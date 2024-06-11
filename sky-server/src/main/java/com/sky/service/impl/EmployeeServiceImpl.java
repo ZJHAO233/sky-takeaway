@@ -25,6 +25,12 @@ import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * 员工服务实施
+ *
+ * @author ZJHAO
+ * @date 2024/06/11
+ */
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
@@ -86,7 +92,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setUpdateTime(LocalDateTime.now());
 
         //设置当前记录创建人id和修改人id
-        //目前写个假数据，后期修改
         employee.setCreateUser(BaseContext.getCurrentId());
         employee.setUpdateUser(BaseContext.getCurrentId());
 
