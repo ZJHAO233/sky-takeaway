@@ -143,6 +143,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee getById(Long id) {
         Employee employee = employeeMapper.getById(id);
+        // 密码防泄漏
         employee.setPassword("*****");
         return employee;
     }
