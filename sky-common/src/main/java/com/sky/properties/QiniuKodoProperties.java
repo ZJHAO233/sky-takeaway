@@ -5,19 +5,18 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
- * 读取阿里云oss配置
+ * 七牛对象存储配置
  *
  * @author ZJHAO
  * @date 2024/06/14
  */
 @Component
-@ConfigurationProperties(prefix = "sky.alioss")
+@ConfigurationProperties(prefix = "sky.qiniukodo")
 @Data
-public class AliOssProperties {
+public class QiniuKodoProperties {
 
-    private String endpoint;
-    private String accessKeyId;
-    private String accessKeySecret;
-    private String bucketName;
-
+    // private String endpoint;
+    private String accessKey;
+    private String secretKey;
+    private String bucket;
 }
