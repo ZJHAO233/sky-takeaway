@@ -46,4 +46,4 @@ sky:
 #    endpoint: ${sky.qiniukodo.endpoint}
     access-key: ${sky.qiniukodo.access-key}
     secret-key: ${sky.qiniukodo.secret-key}
-    bucket-name: ${sky.qiniukodo.bucket}
+    bucket: ${sky.qiniukodo.bucket}
