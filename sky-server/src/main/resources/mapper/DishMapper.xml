@@ -9,6 +9,7 @@
         values (#{name}, #{categoryId}, #{price}, #{status}, #{description}, #{image}, #{createTime}, #{updateTime},
                 #{createUser}, #{updateUser})
     </insert>
+
     <select id="pageQuery" resultType="com.sky.vo.DishVO">
         select d.*, c.name as categoryName
         from dish d
@@ -26,4 +27,23 @@
         </where>
         order by d.create_time desc
     </select>
+
+    <select id="getStatusByIds" resultType="java.lang.Long">
+        select count(*) count
+        from dish
+        <where>
+            id in
+            <foreach collection="ids" item="id" open="(" separator="," close=")">
+                #{id}
+            </foreach>
+            and status = 1
+        </where>
+    </select>
+
+    <delete id="deleteByIds">
+        delete from dish where id in
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
 </mapper>
