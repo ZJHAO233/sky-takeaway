@@ -16,18 +16,11 @@ import java.util.List;
 @Mapper
 public interface DishFlavorsMapper {
     /**
-     * 批量插入口味数据
-     *
-     * @param flavors 口味
-     */
-    void insertBatch(List<DishFlavor> flavors);
-
-    /**
      * 按菜品 ID 批量删除
      *
      * @param ids id
      */
-    void deleteByDishIds(List<Long> ids);
+    void deleteByDishIds(List<Long> dishIds);
 
     /**
      * 按菜品 ID 删除
@@ -45,4 +38,11 @@ public interface DishFlavorsMapper {
      */
     @Select("select * from dish_flavor where dish_id = #{id}")
     List<DishFlavor> getByDishId(Long id);
+
+    /**
+     * 批量插入口味数据
+     *
+     * @param flavors 口味
+     */
+    void insertBatch(List<DishFlavor> flavors);
 }
