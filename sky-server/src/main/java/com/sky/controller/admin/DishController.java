@@ -35,31 +35,84 @@ public class DishController {
         return Result.success();
     }
 
+    /**
+     * 分页
+     *
+     * @param dishPageQueryDTO 菜品页面查询dto
+     * @return {@link Result }<{@link PageResult }>
+     */
     @GetMapping("/page")
-    public Result<PageResult> page(DishPageQueryDTO dishPageQueryDTO){
+    public Result<PageResult> page(DishPageQueryDTO dishPageQueryDTO) {
         log.info("分页查询菜品：{}", dishPageQueryDTO);
         PageResult pageResult = dishService.pageQuery(dishPageQueryDTO);
         return Result.success(pageResult);
     }
 
+    /**
+     * 批量删除
+     *
+     * @param ids id
+     * @return {@link Result }
+     */
     @DeleteMapping
-    public Result deleteBath(@RequestParam List<Long> ids){
+    public Result deleteBath(@RequestParam List<Long> ids) {
         log.info("删除菜品：{}", ids);
         dishService.deleteBath(ids);
         return Result.success();
     }
 
+    /**
+     * 通过id获取
+     *
+     * @param id ID
+     * @return {@link Result }<{@link DishVO }>
+     */
     @GetMapping("/{id}")
-    public Result<DishVO> getById(@PathVariable Long id){
+    public Result<DishVO> getById(@PathVariable Long id) {
         log.info("根据id查询菜品：{}", id);
         DishVO dishVO = dishService.getByIdWithFlavor(id);
         return Result.success(dishVO);
     }
 
+    /**
+     * 修改
+     *
+     * @param dishDTO 菜DTO
+     * @return {@link Result }
+     */
     @PutMapping
-    public Result update(@RequestBody DishDTO dishDTO){
+    public Result update(@RequestBody DishDTO dishDTO) {
         log.info("修改菜品：{}", dishDTO);
         dishService.updateWithFlavor(dishDTO);
         return Result.success();
     }
+
+    /**
+     * 起售或停售
+     *
+     * @param status 状态
+     * @param id     ID
+     * @return {@link Result }
+     */
+    @PostMapping("/status/{status}")
+    public Result startOrStop(@PathVariable Integer status, Long id) {
+
+        dishService.startOrStop(status, id);
+
+        return Result.success();
+    }
+
+    /**
+     * 根据分类id查询菜品
+     *
+     * @param dishPageQueryDTO 菜品页面查询dto
+     * @return {@link Result }<{@link List }<{@link DishVO }>>
+     */
+    @GetMapping("/list")
+    public Result<List<DishVO>> list(Long categoryId) {
+        log.info("根据分类id查询菜品：{}", categoryId);
+        List<DishVO> dishVOList = dishService.list(categoryId);
+        return Result.success(dishVOList);
+    }
+
 }
