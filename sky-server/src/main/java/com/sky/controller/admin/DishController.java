@@ -114,5 +114,4 @@ public class DishController {
         List<DishVO> dishVOList = dishService.list(categoryId);
         return Result.success(dishVOList);
     }
-
 }

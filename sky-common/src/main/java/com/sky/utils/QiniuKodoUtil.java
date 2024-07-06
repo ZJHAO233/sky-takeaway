@@ -52,6 +52,7 @@ public class QiniuKodoUtil {
         }
 
         // 获取上传文件的url http://sf0h0y7bp.hd-bkt.clouddn.com/640.jpg
+        // http://sf0h0y7bp.hd-bkt.clouddn.com/054363f5-5580-4a13-907f-bcd47de09874.png
         String cdn = "sf0h0y7bp.hd-bkt.clouddn.com";
 
         StringBuilder stringBuilder = new StringBuilder("https://");

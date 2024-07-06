@@ -60,7 +60,6 @@ public interface DishMapper {
      */
     void deleteByIds(List<Long> ids);
 
-
     /**
      * 按id删除
      *
@@ -76,4 +75,9 @@ public interface DishMapper {
     void update(Dish dish);
 
     List<DishVO> list(Dish dish);
+
+    List<Dish> getBySetmealId(Long id);
+
+    Integer countByCategoryIds(List<Dish> dishes);
+
 }

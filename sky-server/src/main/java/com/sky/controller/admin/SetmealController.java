@@ -78,6 +78,7 @@ public class SetmealController {
 
     /**
      * 修改套餐
+     *
      * @param setmealDTO 套餐DTO
      * @return {@link Result }
      */
@@ -85,6 +86,13 @@ public class SetmealController {
     public Result update(@RequestBody SetmealDTO setmealDTO) {
         log.info("修改套餐:{}", setmealDTO);
         setmealService.update(setmealDTO);
+        return Result.success();
+    }
+
+    @PostMapping("/status/{status}")
+    public Result startOrStop(@PathVariable Integer status, Long id) {
+        log.info("套餐起售停售:{},{}", status, id);
+        setmealService.startOrStop(status, id);
         return Result.success();
     }
 }
