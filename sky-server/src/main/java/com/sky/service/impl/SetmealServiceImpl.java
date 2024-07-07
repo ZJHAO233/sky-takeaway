@@ -91,7 +91,7 @@ public class SetmealServiceImpl implements SetmealService {
     @Transactional
     public void deleteBath(List<Long> ids) {
         // 判断是否有套餐正在售卖
-       Integer count = setmealMapper.countByCategoryIds(ids);
+        Integer count = setmealMapper.countByCategoryIds(ids);
         if (count > 0) {
             // 如果有正在售卖的套餐，抛出异常
             throw new DeletionNotAllowedException(MessageConstant.SETMEAL_ON_SALE);
@@ -173,19 +173,22 @@ public class SetmealServiceImpl implements SetmealService {
 
     /**
      * 条件查询
+     *
      * @param setmeal
      * @return
      */
+    @Override
     public List<Setmeal> list(Setmeal setmeal) {
-        List<Setmeal> list = setmealMapper.list(setmeal);
-        return list;
+        return setmealMapper.list(setmeal);
     }
 
     /**
      * 根据id查询菜品选项
+     *
      * @param id
      * @return
      */
+    @Override
     public List<DishItemVO> getDishItemById(Long id) {
         return setmealMapper.getDishItemBySetmealId(id);
     }
