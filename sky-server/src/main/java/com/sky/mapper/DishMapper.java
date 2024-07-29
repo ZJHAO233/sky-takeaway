@@ -68,8 +68,14 @@ public interface DishMapper {
     @Delete("delete from dish where id = #{id}")
     void deleteById(Long id);
 
+    /**
+     * 按 ID 获取风味
+     *
+     * @param id 同上
+     * @return {@link Dish }
+     */
     @Select("select * from dish where id = #{id}")
-    Dish getByIdWithFlavor(Long id);
+    Dish getById(Long id);
 
     @AutoFill(OperationType.UPDATE)
     void update(Dish dish);

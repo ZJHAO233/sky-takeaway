@@ -134,7 +134,7 @@ public class DishServiceImpl implements DishService {
     @Override
     public DishVO getByIdWithFlavor(Long id) {
         // 根据id查询菜品数据
-        Dish dish = dishMapper.getByIdWithFlavor(id);
+        Dish dish = dishMapper.getById(id);
 
         // 根据菜品id查询口味数据
         List<DishFlavor> dishFlavors = dishFlavorsMapper.getByDishId(id);

@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+  # mysql配置  
+  mysql:
+    environment:
+      # 时区  
+      TZ: "Asia/Shanghai"
+      # root账号的密码  
+      MYSQL_ROOT_PASSWORD: "123456"
+    # 镜像  
+    image: mysql
+    # 容器名  
+    container_name: mysql
+    # 重启策略（可选，根据需要启用）  
+    # restart: always  
+    # 卷映射挂载  
+    volumes:
+      # 配置文件（确保目录中存在有效的配置文件）  
+      - "./mysql/conf:/etc/mysql/conf.d"
+      # 数据目录，要确保先创建好  
+      - "./mysql/data:/var/lib/mysql"
+      # 初始化的脚本（确保目录中存在有效的SQL文件）  
+      - "./mysql/init:/docker-entrypoint-initdb.d"
+    # 端口映射  
+    ports:
+      - "3306:3306"
+    # 网络连接（将服务连接到自定义网络）  
+    networks:
+      - net-zjhao
+  f
+  # redis配置  
+  redis:
+    # 镜像  
+    image: redis:latest
+    # 容器名  
+    container_name: redis
+    # 命令：启动AOF并设置密码  
+    command: redis-server --appendonly yes --requirepass "123456"
+    # 端口映射  
+    ports:
+      - "6379:6379"
+    # 卷挂载  
+    volumes:
+      - ./redis_data:/data
+    # 网络连接（将服务连接到自定义网络）  
+    networks:
+      - net-zjhao
+
+# 网络定义  
+networks:
+  net-zjhao:
+    # 网络驱动
+    driver: bridge

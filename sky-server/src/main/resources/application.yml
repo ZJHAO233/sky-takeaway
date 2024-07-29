@@ -57,6 +57,7 @@ sky:
     access-key: ${sky.qiniukodo.access-key}
     secret-key: ${sky.qiniukodo.secret-key}
     bucket: ${sky.qiniukodo.bucket}
+    cdn-url: ${sky.qiniukodo.cdn-url}
   wechat:
     appid: ${sky.wechat.appid}
     secret: ${sky.wechat.secret}

@@ -25,6 +25,7 @@ public class QiniuKodoUtil {
     private String accessKey;
     private String secretKey;
     private String bucket;
+    private String cdnUrl;
 
     public String upload(byte[] bytes, String objectName) {
 
@@ -51,12 +52,8 @@ public class QiniuKodoUtil {
             }
         }
 
-        // 获取上传文件的url http://sf0h0y7bp.hd-bkt.clouddn.com/640.jpg
-        // http://sf0h0y7bp.hd-bkt.clouddn.com/054363f5-5580-4a13-907f-bcd47de09874.png
-        String cdn = "sf0h0y7bp.hd-bkt.clouddn.com";
-
-        StringBuilder stringBuilder = new StringBuilder("https://");
-        stringBuilder.append(cdn).append("/").append(objectName);
+        StringBuilder stringBuilder = new StringBuilder("http://");
+        stringBuilder.append(cdnUrl).append("/").append(objectName);
         log.info("文件上传到:{}", stringBuilder.toString());
         return stringBuilder.toString();
 

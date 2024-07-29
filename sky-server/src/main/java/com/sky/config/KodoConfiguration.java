@@ -23,7 +23,8 @@ public class KodoConfiguration {
         return new QiniuKodoUtil(
                 qiniuKodoProperties.getAccessKey(),
                 qiniuKodoProperties.getSecretKey(),
-                qiniuKodoProperties.getBucket()
+                qiniuKodoProperties.getBucket(),
+                qiniuKodoProperties.getCdnUrl()
         );
     }
 }
