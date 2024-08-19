@@ -90,10 +90,11 @@ public class CategoryController {
         return Result.success();
     }
 
+
     /**
      * 根据类型查询分类
      * @param type
-     * @return
+     * @return {@link Result }<{@link List }<{@link Category }>>
      */
     @GetMapping("/list")
     @ApiOperation("根据类型查询分类")
@@ -101,6 +102,4 @@ public class CategoryController {
         List<Category> list = categoryService.list(type);
         return Result.success(list);
     }
-
-
 }
